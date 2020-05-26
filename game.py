@@ -93,7 +93,21 @@ def battle(monster_strength: int, monster_health: int) -> None:
     sleep(1)
 
 
+def hero_status() -> None:
+    """Функция выводит текущий статус:
+    сколько монстров погибло от руки героя, сколько жизней осталось и текущую силу атаки
+    """
+    global hero_health
+    global hero_strength
+    global dead_monsters
+    print(f'\n-----------------------------------------------------------\n'
+          f'Повержено монстров: {dead_monsters} | Осталось жизней {hero_health} | Сила атаки {hero_strength}'
+          f'\n-----------------------------------------------------------')
+    sleep(1)
+
+
 actions = {1: finding_apple, 2: finding_sword, 3: meeting_monster}
 
 while hero_health > 0 and dead_monsters != 10:
+    hero_status()
     actions[randint(1, 3)]()
